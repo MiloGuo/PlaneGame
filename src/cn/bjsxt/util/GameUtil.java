@@ -7,7 +7,7 @@ import java.net.URL;
 
 public class GameUtil {
 	
-	private GameUtil(){}  //工具类最好将构造器私有了。
+	private GameUtil(){}  
 	
 	public static Image getImage(String path){
 		BufferedImage bi=null;
