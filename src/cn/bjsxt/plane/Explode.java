@@ -5,9 +5,7 @@ import java.awt.Image;
 
 import cn.bjsxt.util.GameUtil;
 
-/*
- * ±¨’®¿‡
- */
+
 public class Explode {
 	double x,y;
 	static Image[] imgs = new Image[16];
