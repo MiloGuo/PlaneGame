@@ -16,8 +16,7 @@ import cn.bjsxt.util.MyFrame;
 public class PlaneGameFrame extends MyFrame {
 	Image bg = GameUtil.getImage("images/bg.jpg");
 	Plane p = new Plane("images/plane.png",50,50);
-	ArrayList  bulletList = new ArrayList();   //·ºÐÍÔÝÊ±Î´Ñ§£¬ÔÝ²»¼Ó¡£ÒÔºóÑ§ÁË£¬Ç¿ÁÒ½¨Òé¼ÓÉÏ¡£
-	
+	ArrayList  bulletList = new ArrayList();   
 	Date startTime;
 	Date endTime;
 	
@@ -31,7 +30,7 @@ public class PlaneGameFrame extends MyFrame {
 			b.draw(g);
 			boolean peng = b.getRect().intersects(p.getRect());
 			if(peng){
-				p.setLive(false);  //·É»úËÀµô£¡
+				p.setLive(false);  
 				if(bao==null){
 					endTime = new Date();
 					bao = new Explode(p.x,p.y);
@@ -44,24 +43,24 @@ public class PlaneGameFrame extends MyFrame {
 		
 		if(!p.isLive()){
 			int period = (int)((endTime.getTime()-startTime.getTime())/1000);
-			printInfo(g, "Ê±¼ä£º"+period+"Ãë", 20, 120, 260, Color.white);
+			printInfo(g, "Timeï¼š"+period+"Second", 20, 120, 260, Color.white);
 			
 			switch (period/10) {
 			case 0:
 			case 1:
-				printInfo(g, "²ËÄñ", 50,100,200,Color.white);
+				printInfo(g, "Bad", 50,100,200,Color.white);
 				break;
 			case 2:
-				printInfo(g, "Ð¡Äñ", 50,100,200,Color.white);
+				printInfo(g, "Good", 50,100,200,Color.white);
 				break;
 			case 3:
-				printInfo(g, "´óÄñ", 50,100,200,Color.yellow);
+				printInfo(g, "Great", 50,100,200,Color.yellow);
 				break;
 			case 4:
-				printInfo(g, "ÄñÍõ×Ó", 50,100,200,Color.yellow);
+				printInfo(g, "Wondeful", 50,100,200,Color.yellow);
 				break;
 			default:
-				printInfo(g, "ÄñÈË", 50,100,200,Color.yellow);
+				printInfo(g, "Winner", 50,100,200,Color.yellow);
 				break;
 			}
 			
@@ -69,21 +68,16 @@ public class PlaneGameFrame extends MyFrame {
 		}
 		
 		
-//		printInfo(g, "·ÖÊý£º100", 10, 50, 50, Color.yellow);
+
 		
 	}
 	
 	
-	/**
-	 * ÔÚ´°¿ÚÉÏ´òÓ¡ÐÅÏ¢
-	 * @param g
-	 * @param str
-	 * @param size
-	 */
+	
 	public void printInfo(Graphics g,String str,int size,int x,int y,Color color){
 		Color c = g.getColor();
 		g.setColor(color);
-		Font f = new Font("ËÎÌå",Font.BOLD,size);
+		Font f = new Font("Times New Roma",Font.BOLD,size);
 		g.setFont(f);
 		g.drawString(str,x,y);
 		g.setColor(c);
@@ -98,10 +92,10 @@ public class PlaneGameFrame extends MyFrame {
 	
 	public void launchFrame(){
 		super.launchFrame();
-		//Ôö¼Ó¼üÅÌµÄ¼àÌý
-		addKeyListener(new KeyMonitor());
 		
-		//Éú³ÉÒ»¶Ñ×Óµ¯
+		r(new KeyMonitor());
+		
+		
 		for(int i=0;i<35;i++){
 			Bullet b = new Bullet();
 			bulletList.add(b);
@@ -111,12 +105,12 @@ public class PlaneGameFrame extends MyFrame {
 	}
 	
 	
-	//¶¨ÒåÎªÄÚ²¿Àà£¬¿ÉÒÔ·½±ãµÄÊ¹ÓÃÍâ²¿ÀàµÄÆÕÍ¨ÊôÐÔ
+	
 	class KeyMonitor extends KeyAdapter {
 
 		@Override
 		public void keyPressed(KeyEvent e) {
-//			System.out.println("°´ÏÂ£º"+e.getKeyCode());
+
 			p.addDirection(e);
 		}
 
